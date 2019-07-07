@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class SignIn extends Component{
     state = {
@@ -7,7 +9,12 @@ class SignIn extends Component{
     }
 
     handleSignIn = (e) => {
-        e.preventdefault()
+        e.preventDefault()
+        const { dispatch } = this.props
+
+        console.log('Inside handleSignIn: ',document.getElementById("userNamesSelect").value)
+        dispatch(setAuthedUser(document.getElementById("userNamesSelect").value))
+
         this.setState(() => ({
             signIn: true
         }))
@@ -19,6 +26,8 @@ class SignIn extends Component{
 
         if(signIn === true){
             //todo: Redirect to Home page
+            
+            return <Redirect to='/' />
         }
 
         return (
@@ -27,12 +36,12 @@ class SignIn extends Component{
                 Welcome to Would-You-Rather
             </header>
             <h3>Please Sign-in to continue.</h3>
-            <select>
+            <select id="userNamesSelect">
             {userNames.map((id) => (
                         <option key={id}>{id}</option>
                     ))}
             </select>
-            <button>Sign In</button>
+            <button onClick={this.handleSignIn}>Sign In</button>
             
         </div>
         )
@@ -40,9 +49,10 @@ class SignIn extends Component{
 
 }
 
-function mapStateToProps({users}){
+function mapStateToProps({users, id}){
     return{
-        userNames: Object.keys(users)
+        userNames: Object.keys(users),
+        id: id
     }
 }
 
