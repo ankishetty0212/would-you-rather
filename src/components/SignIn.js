@@ -27,7 +27,7 @@ class SignIn extends Component{
         if(signIn === true){
             //todo: Redirect to Home page
             
-            return <Redirect to='/' />
+            return <Redirect to='/home' />
         }
 
         return (
