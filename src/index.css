@@ -51,3 +51,15 @@ code {
   border: 1px solid #ccc;
   border-top: none;
 }
+
+.gridContainer {
+  flex-direction: row;
+}
+
+.gridRow{
+  border: 0.2px solid mediumblue;
+}
+
+.gridCol{
+  border: 0.2px solid mediumblue;
+}

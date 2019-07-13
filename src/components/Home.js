@@ -2,17 +2,18 @@ import React, { Component } from 'react'
 import {Tab, Tabs, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Nav from './Nav'
+import Questions from './Questions'
 
 class Home extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
-            key: 'unanswered',
+            selectedTabKey: 'unanswered',
         }
     }
 
     onTabSelect = (key) => {
-        this.setState({key})
+        this.setState({selectedTabKey: key})
         console.log('Tab selected: ', key)
     }
 
@@ -28,15 +29,15 @@ class Home extends Component {
                 <Nav />
                 <Tabs className="tab"
                     id="questionsTab"
-                    activeKey={this.state.key}
+                    activeKey={this.state.selectedTabKey}
                     onSelect={key => this.onTabSelect(key)}
                 >
                     <Tab className="tabLinks" eventKey="unanswered" title="Unanswered Questions">
-                        
+                        <Questions selectedTabKey={this.state.selectedTabKey}/>
                     </Tab>
 
                     <Tab className="tabLinks" eventKey="answered" title="Answered Questions">
-                        
+                        <Questions selectedTabKey={this.state.selectedTabKey}/>
                     </Tab>
 
                 </Tabs>

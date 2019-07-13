@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../App.css';
-import { getInitialUsers } from '../actions/shared';
+import { handleInitialData } from '../actions/shared';
 import SignIn from './SignIn'
 import Home from './Home'
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(getInitialUsers())
+    this.props.dispatch(handleInitialData())
   }
 
   render() {
@@ -28,9 +28,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, questions }) {
   return {
-    users: users
+    users,
+    questions
   }
 }
 

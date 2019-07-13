@@ -1,11 +1,13 @@
-import {getUsers} from '../utils/api'
+import {getInitialData} from '../utils/api'
 import {receiveUsers} from './users'
+import {receiveQuestions} from './questions'
 
-export function getInitialUsers(){
+export function handleInitialData(){
     return (dispatch) => {
-        return getUsers()
-        .then(({users})=>{
+        return getInitialData()
+        .then(({users, questions})=>{
             dispatch(receiveUsers(users))
+            dispatch(receiveQuestions(questions))
         }) 
     }
 }

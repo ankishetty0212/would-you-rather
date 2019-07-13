@@ -1,5 +1,3 @@
-import { getAllQuestions } from '../utils/api';
-
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 
 //Action Creator - receiveQuestions
@@ -11,11 +9,11 @@ export function receiveQuestions(questions){
 }
 
 //Function to dispatch call to action - receiveQuestions
-export function receiveAllQuestions(){
+/* export function receiveAllQuestions(){
     return (dispatch) => {
         return getAllQuestions()
         .then(({questions}) => {
             dispatch(receiveQuestions(questions))
         })
     }
-}
+} */
