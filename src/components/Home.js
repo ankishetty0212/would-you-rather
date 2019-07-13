@@ -1,23 +1,54 @@
 import React, { Component } from 'react'
+import {Tab, Tabs, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
+import Nav from './Nav'
 
-class Home extends Component{
-    render(){
-        const { id } = this.props
-        console.log('id: ',this.props)
-        
-        return(
+class Home extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            key: 'unanswered',
+        }
+    }
+
+    onTabSelect = (key) => {
+        this.setState({key})
+        console.log('Tab selected: ', key)
+    }
+
+    render() {
+        const { authedUser } = this.props
+
+        return (
             <div>
-                Home Screen
-                <span className="user">Hello, {id}</span>
+                <div className="user">Hello, {authedUser}
+                    <span><Button>Logout</Button></span>
+                </div>
+                
+                <Nav />
+                <Tabs className="tab"
+                    id="questionsTab"
+                    activeKey={this.state.key}
+                    onSelect={key => this.onTabSelect(key)}
+                >
+                    <Tab className="tabLinks" eventKey="unanswered" title="Unanswered Questions">
+                        
+                    </Tab>
+
+                    <Tab className="tabLinks" eventKey="answered" title="Answered Questions">
+                        
+                    </Tab>
+
+                </Tabs>
             </div>
         )
     }
 }
 
-function mapStateToProps({id}){
-    return{
-        id
+function mapStateToProps({ users, authedUser }) {
+    return {
+        users,
+        authedUser
     }
 }
 

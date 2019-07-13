@@ -21,6 +21,7 @@ class SignIn extends Component{
     }
 
     render(){
+        console.log('props: ',this.props)
         const { userNames } = this.props;
         const { signIn } = this.state
 
@@ -49,10 +50,11 @@ class SignIn extends Component{
 
 }
 
-function mapStateToProps({users, id}){
+function mapStateToProps({users}){
+    console.log('Users',users)
     return{
         userNames: Object.keys(users),
-        id: id
+        users: users
     }
 }
 

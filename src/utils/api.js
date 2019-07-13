@@ -1,4 +1,4 @@
-import{_getUsers} from './_DATA.js'
+import{_getUsers, _getQuestions} from './_DATA.js'
 
 export function getUsers(){
     return Promise.all([
@@ -6,4 +6,12 @@ export function getUsers(){
       ]).then(([users]) => ({
         users
       }))
+}
+
+export function getAllQuestions(){
+    return Promise.all([
+      _getQuestions()
+    ]).then(([questions]) => ({
+      questions
+    }))
 }
