@@ -11,8 +11,6 @@ class SignIn extends Component{
     handleSignIn = (e) => {
         e.preventDefault()
         const { dispatch } = this.props
-
-        console.log('Inside handleSignIn: ',document.getElementById("userNamesSelect").value)
         dispatch(setAuthedUser(document.getElementById("userNamesSelect").value))
 
         this.setState(() => ({
@@ -21,7 +19,6 @@ class SignIn extends Component{
     }
 
     render(){
-        console.log('props: ',this.props)
         const { userNames } = this.props;
         const { signIn } = this.state
 

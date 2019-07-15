@@ -5,6 +5,8 @@ import '../App.css';
 import { handleInitialData } from '../actions/shared';
 import SignIn from './SignIn'
 import Home from './Home'
+import NewQuestion from './NewQuestion'
+import Result from './Result'
 
 class App extends Component {
 
@@ -22,6 +24,8 @@ class App extends Component {
         <div className="App">
           <Route path='/' exact component={SignIn} />
           <Route path='/home' exact component={Home} />
+          <Route path='/newQuestion' exact component={NewQuestion} />
+          <Route path='/question/:id' exact component={Result} />
         </div>
       </Router>
     )

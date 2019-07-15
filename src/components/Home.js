@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import {Tab, Tabs, Button} from 'react-bootstrap'
+import { Tab, Tabs, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Nav from './Nav'
-import Questions from './Questions'
+import UnansweredQuestion from './UnansweredQuestion'
+import AnsweredQuestion from './AnsweredQuestion'
 
 class Home extends Component {
     constructor(props) {
@@ -13,8 +14,7 @@ class Home extends Component {
     }
 
     onTabSelect = (key) => {
-        this.setState({selectedTabKey: key})
-        console.log('Tab selected: ', key)
+        this.setState({ selectedTabKey: key })
     }
 
     render() {
@@ -25,7 +25,7 @@ class Home extends Component {
                 <div className="user">Hello, {authedUser}
                     <span><Button>Logout</Button></span>
                 </div>
-                
+
                 <Nav />
                 <Tabs className="tab"
                     id="questionsTab"
@@ -33,23 +33,29 @@ class Home extends Component {
                     onSelect={key => this.onTabSelect(key)}
                 >
                     <Tab className="tabLinks" eventKey="unanswered" title="Unanswered Questions">
-                        <Questions selectedTabKey={this.state.selectedTabKey}/>
+                        {this.props.questionIds.map((questionId) => (
+                            <UnansweredQuestion key={questionId} selectedTabKey={this.state.selectedTabKey}
+                                questionId={questionId} />
+                        ))}
                     </Tab>
-
                     <Tab className="tabLinks" eventKey="answered" title="Answered Questions">
-                        <Questions selectedTabKey={this.state.selectedTabKey}/>
+                        {this.props.questionIds.map((questionId) => (
+                            <AnsweredQuestion key={questionId} selectedTabKey={this.state.selectedTabKey}
+                                questionId={questionId} />
+                        ))}
                     </Tab>
-
                 </Tabs>
             </div>
         )
     }
 }
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users, authedUser, questions }) {
     return {
         users,
-        authedUser
+        authedUser,
+        questionIds: Object.keys(questions)
+            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }
 }
 
