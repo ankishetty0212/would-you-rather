@@ -38,11 +38,11 @@ class UnansweredQuestion extends Component {
                         </Col>
                         <Col sm={8} className='gridCol'>
                             Would you Rather... <br />
-                            <RadioGroup onChange={this.onChange}>
+                            <RadioGroup >
                                 <RadioButton value={question.optionOne.text}>
                                     {question.optionOne.text}
                                 </RadioButton>
-                                <p> ----OR---- </p>
+                                 
                                 <RadioButton value={question.optionTwo.text}>
                                     {question.optionTwo.text}
                                 </RadioButton>

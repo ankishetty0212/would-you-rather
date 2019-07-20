@@ -38,11 +38,18 @@ class AnsweredQuestion extends Component {
                         </Col>
                         <Col sm={8} className='gridCol'>
                             Would you Rather... <br />
-                            <RadioGroup onChange={this.onChange}>
-                                <RadioButton value={question.optionOne.text}>
+                            <RadioGroup>
+                                <RadioButton 
+                                    value={question.optionOne.votes.includes(authedUser) 
+                                        ? question.optionOne.text
+                                        : ""
+                                }>
                                     {question.optionOne.text}
                                 </RadioButton>
-                                <RadioButton value={question.optionTwo.text}>
+                                <RadioButton value={question.optionTwo.votes.includes(authedUser) 
+                                        ? question.optionTwo.text
+                                        : ""
+                                }>
                                     {question.optionTwo.text}
                                 </RadioButton>
                             </RadioGroup>

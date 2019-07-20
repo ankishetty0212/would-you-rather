@@ -22,7 +22,8 @@ class Result extends Component {
 
         return (
             <div>
-                {(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+                {(question.optionOne.votes.includes(authedUser) 
+                    || question.optionTwo.votes.includes(authedUser))
                     ? <PollResults questionId={id} />
                     : <Question questionId={id} />
                 }

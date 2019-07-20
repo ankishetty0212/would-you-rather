@@ -47,7 +47,6 @@ export function handleAddQuestion(optionOneText, optionTwoText){
 
 export function handleAnswerQuestion({authedUser, questionId, answer}){
     return(dispatch, getState) => {
-        //const {authedUser} = getState()
         dispatch(showLoading())
         return saveQuestionAnswer({ authedUser, questionId, answer })
         .then(dispatch(answerQuestion({authedUser, questionId, answer})))

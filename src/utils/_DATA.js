@@ -191,6 +191,7 @@ export function _saveQuestionAnswer ({ authedUser, questionId, answer }) {
           ...questions[questionId],
           [answer]: {
             ...questions[questionId][answer],
+            text: questions[questionId][answer].text,
             votes: questions[questionId][answer].votes.concat([authedUser])
           }
         }

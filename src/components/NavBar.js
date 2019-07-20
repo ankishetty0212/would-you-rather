@@ -32,7 +32,7 @@ class NavBar extends Component {
                 <div>
                     <span>Hello,  {user.name}</span>
                     <Image src={user.avatarURL} className='avatar' />
-                    <Link to="#"
+                    <Link to="/"
                         className="linkButton"
                         onClick={this.handleLogout}
                     >

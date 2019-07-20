@@ -31,9 +31,9 @@ class NewQuestion extends Component {
         }
 
         return (
-            <div>
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Group controlId="formGroupQnOne">
+            <div className="card-align">
+            <Form onSubmit={this.handleSubmit} style={{width:"50%", top:"20px" }} className="form-horizontal">
+                <Form.Group controlId="formGroupQnOne" >
                     <Form.Label>Would You Rather ?</Form.Label>
                     <Form.Control ref={this.firstOption} type="text" placeholder="Option 1" 
                         />
