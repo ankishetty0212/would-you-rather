@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Tab, Tabs, Button } from 'react-bootstrap'
+import { Tab, Tabs } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import Nav from './Nav'
 import UnansweredQuestion from './UnansweredQuestion'
 import AnsweredQuestion from './AnsweredQuestion'
 
@@ -18,18 +17,8 @@ class Home extends Component {
     }
 
     render() {
-        const { authedUser } = this.props
         return (
             <div>
-                <div className="user">Hello, {authedUser.name}
-                    <img
-                        src={authedUser.avatarURL}
-                        alt={`Avatar of ${authedUser.name}`}
-                        className='avatar' />
-                    <Button>Logout</Button>
-                </div>
-
-                <Nav />
                 <Tabs className="tab"
                     id="questionsTab"
                     activeKey={this.state.selectedTabKey}

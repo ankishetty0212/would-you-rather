@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import Nav from './Nav'
 
 class NewQuestion extends Component {
     constructor(){
@@ -33,7 +32,6 @@ class NewQuestion extends Component {
 
         return (
             <div>
-            <Nav />
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formGroupQnOne">
                     <Form.Label>Would You Rather ?</Form.Label>

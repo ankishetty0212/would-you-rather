@@ -5,7 +5,7 @@ import { setAuthedUser } from '../actions/authedUser'
 
 class SignIn extends Component{
     state = {
-        signIn: false
+        redirectToReferrer: false
     }
 
     handleSignIn = (e) => {
@@ -14,16 +14,17 @@ class SignIn extends Component{
         dispatch(setAuthedUser(document.getElementById("userNamesSelect").value))
 
         this.setState(() => ({
-            signIn: true
+            redirectToReferrer: true
         }))
     }
 
     render(){
         const { userNames } = this.props;
-        const { signIn } = this.state
+        const { redirectToReferrer } = this.state
+        const { from } = this.props.location.state || { from: { pathname: '/home' } }
 
-        if(signIn === true){
-            return <Redirect to='/home' />
+        if (redirectToReferrer === true) {
+            return <Redirect to={from} />
         }
 
         return (

@@ -42,6 +42,7 @@ class UnansweredQuestion extends Component {
                                 <RadioButton value={question.optionOne.text}>
                                     {question.optionOne.text}
                                 </RadioButton>
+                                <p> ----OR---- </p>
                                 <RadioButton value={question.optionTwo.text}>
                                     {question.optionTwo.text}
                                 </RadioButton>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
+import { connect } from 'react-redux';
 import { handleAnswerQuestion } from '../actions/questions'
 
 
@@ -22,7 +23,7 @@ class Question extends Component {
     handleSubmitAnswer = (e) => {
         e.preventDefault()
         const { answer } = this.state
-        const { authedUser, questionId, question } = this.props
+        const { authedUser, questionId } = this.props
 
         this.props.dispatch(handleAnswerQuestion({ authedUser, questionId, answer }))
 
@@ -32,16 +33,20 @@ class Question extends Component {
     }
 
     render() {
-        const { authedUser, question, users, selectedTabKey } = this.props
+        const { question, users } = this.props
         const user = users[question.author]
-        console.log('In Question - user : ', user)
+
+        if (this.state.qid) {
+            return <Redirect to={`/question/${this.state.qid}`} />
+        }
+
         return (
             <Container className='gridContainer'>
                 {
                     <Row key={question.id} className='gridRow'>
                         <Col sm={4} className='gridCol'>
                             <img
-                                src={user.avatarURL}
+                                src={`../${user.avatarURL}`}
                                 alt={`Avatar of ${user.name}`}
                                 className='avatar' />
                             {user.name} asks...

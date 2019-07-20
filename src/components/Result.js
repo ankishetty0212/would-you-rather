@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import Nav from './Nav'
 import Question from './Question'
 import PollResults from './PollResults';
 
 class Result extends Component {
-    state= {
-        selectedTabKey: null,
-        id: null
-    }
-    
+
     render() {
-        const key  = this.props.location.state
-        const questionId = this.props.match.params
-        
+        const { id, authedUser, questions } = this.props
+        console.log('In Result - authedUser', authedUser)
+        console.log('Question -  ', questions[id])
+
+        if (!questions[id]) {
+            return <Redirect to={{
+                pathname: '/error',
+                state: { referrer: this.props.location.pathname }
+            }} />
+        }
+
+        const question = questions[id]
+
         return (
             <div>
-                <Nav />
-
-                {key.selectedTabKey === 'unanswered' ? (
-                    <Question questionId={questionId.id}/>
-                ) : (
-                    <PollResults questionId={questionId.id}/>
-                )}
+                {(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+                    ? <PollResults questionId={id} />
+                    : <Question questionId={id} />
+                }
             </div>
         )
     }
 }
 
-export default connect()(Result);
+function mapStateToProps({ authedUser, questions }, props) {
+    const { id } = props.match.params
+    return {
+        id,
+        authedUser,
+        questions
+    }
+}
+
+export default connect(mapStateToProps)(Result);
