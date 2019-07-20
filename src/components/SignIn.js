@@ -23,8 +23,6 @@ class SignIn extends Component{
         const { signIn } = this.state
 
         if(signIn === true){
-            //todo: Redirect to Home page
-            
             return <Redirect to='/home' />
         }
 
@@ -48,7 +46,6 @@ class SignIn extends Component{
 }
 
 function mapStateToProps({users}){
-    console.log('Users',users)
     return{
         userNames: Object.keys(users),
         users: users

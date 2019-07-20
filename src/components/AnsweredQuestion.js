@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class AnsweredQuestion extends Component {
     state = {
@@ -17,7 +17,7 @@ class AnsweredQuestion extends Component {
     handleViewPoll = (e, id) => {
         e.preventDefault()
         this.props.history.push(`/question/${id}`)
-        
+
     }
 
     render() {
@@ -26,11 +26,15 @@ class AnsweredQuestion extends Component {
 
         return (
             <Container className='gridContainer'>
-                {   (answeredQuestions[0] !== undefined) &&
+                {(answeredQuestions[0] !== undefined) &&
                     (answeredQuestions[0].includes(question.id)) &&
                     <Row key={question.id} className='gridRow'>
                         <Col sm={4} className='gridCol'>
-                            {question.author} asks...
+                            <img
+                                src={users[question.author].avatarURL}
+                                alt={`Avatar of ${users[question.author].name}`}
+                                className='avatar' />
+                            {users[question.author].name} asks...
                         </Col>
                         <Col sm={8} className='gridCol'>
                             Would you Rather... <br />
@@ -42,8 +46,15 @@ class AnsweredQuestion extends Component {
                                     {question.optionTwo.text}
                                 </RadioButton>
                             </RadioGroup>
-                            <Button variant='info' 
-                                onClick={(e) => this.handleViewPoll(e,question.id)}>View Poll</Button>
+                            <Link className='linkButton'
+                                to={{
+                                    pathname: `/question/${question.id}`,
+                                    state: {
+                                        selectedTabKey: selectedTabKey
+                                    }
+                                }}>
+                                View Poll
+                            </Link>
                         </Col>
                     </Row>
                 }

@@ -7,6 +7,7 @@ import SignIn from './SignIn'
 import Home from './Home'
 import NewQuestion from './NewQuestion'
 import Result from './Result'
+import LeaderBoard from './LeaderBoard'
 
 class App extends Component {
 
@@ -24,8 +25,9 @@ class App extends Component {
         <div className="App">
           <Route path='/' exact component={SignIn} />
           <Route path='/home' exact component={Home} />
-          <Route path='/newQuestion' exact component={NewQuestion} />
+          <Route path='/add' exact component={NewQuestion} />
           <Route path='/question/:id' exact component={Result} />
+          <Route path='/leaderboard' exact component={LeaderBoard} />
         </div>
       </Router>
     )

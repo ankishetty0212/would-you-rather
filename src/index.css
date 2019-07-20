@@ -62,4 +62,21 @@ code {
 
 .gridCol{
   border: 0.2px solid mediumblue;
+  width: max-content
+}
+
+.linkButton{
+  background-color:#051283;
+  border:1px solid #160066;
+  border-radius:5px;
+  color:#fff;
+  margin-right:8px;
+  padding:8px 8px 8px 8px;
+	line-height: 2.9em ;
+ }
+
+ .avatar {
+  height: 50px;
+  border-radius: 25px;
+  margin: 10px;
 }

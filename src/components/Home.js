@@ -19,11 +19,14 @@ class Home extends Component {
 
     render() {
         const { authedUser } = this.props
-
         return (
             <div>
-                <div className="user">Hello, {authedUser}
-                    <span><Button>Logout</Button></span>
+                <div className="user">Hello, {authedUser.name}
+                    <img
+                        src={authedUser.avatarURL}
+                        alt={`Avatar of ${authedUser.name}`}
+                        className='avatar' />
+                    <Button>Logout</Button>
                 </div>
 
                 <Nav />
@@ -53,7 +56,7 @@ class Home extends Component {
 function mapStateToProps({ users, authedUser, questions }) {
     return {
         users,
-        authedUser,
+        authedUser: users[authedUser],
         questionIds: Object.keys(questions)
             .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }

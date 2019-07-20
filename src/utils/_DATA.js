@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: '../../avatars/sarah.jpg',
+    avatarURL: 'sarah.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: '../../avatars/tyler.jpg',
+    avatarURL: 'tyler.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: '../../avatars/john.jpg',
+    avatarURL: 'john.jpg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -171,7 +171,7 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer ({ authedUser, questionId, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -180,18 +180,18 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer
+            [questionId]: answer
           }
         }
       }
 
       questions = {
         ...questions,
-        [qid]: {
-          ...questions[qid],
+        [questionId]: {
+          ...questions[questionId],
           [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            ...questions[questionId][answer],
+            votes: questions[questionId][answer].votes.concat([authedUser])
           }
         }
       }
