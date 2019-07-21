@@ -8,8 +8,6 @@ class Result extends Component {
 
     render() {
         const { id, authedUser, questions } = this.props
-        console.log('In Result - authedUser', authedUser)
-        console.log('Question -  ', questions[id])
 
         if (!questions[id]) {
             return <Redirect to={{

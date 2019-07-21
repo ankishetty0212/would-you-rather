@@ -1,4 +1,40 @@
+# Would You Rather Project
+
+## TL;DR
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this project on your local follow the below steps:
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
+
+## PROJECT INFORMATION
+The **Would You Rather** App is an application where authenticated users can do the following:
+1. Post questions with 2 options
+2. Submit Answer to questions
+3. View Poll Results denoting the number of Votes received per option
+4. View the Leaderboard that displays the number of questions asked & answered by each user along with the total score.
+
+
+There are 6 sections to this application:
+1. _'Login'_ page where the authorized users can login.
+
+2. _'Home'_ page with 'Answered' & 'Unanswered' tabs displaying list of questions with respect to the logged in User.
+
+3. _'Question'_ page where the logged in user can answer a question from the 'Unanswered' list.
+
+4. _'Poll Results'_ page where the logged in user can view the number of votes received to each option for a particular question.
+
+5. _'New Question'_ page where the user can post a question with 2 options.
+
+6. _'Leaderboard'_ page where the logged in user can view the number of questions asked & answered by each user along with the total score.
+
+
+**Technologies/APIs Used:**
+1. ReactJS
+2. Node & NPM
+3. Redux
+4. react-bootstrap library for UI
+3. DATA API provided by Udacity to save questions, answer to question.
 
 ## Available Scripts
 
