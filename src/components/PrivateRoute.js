@@ -10,7 +10,7 @@ class PrivateRoute extends Component{
             <Route {...rest} render={(props) => (
                 this.props.authedUser === null
                 ? <Redirect to={{
-                    pathname: '/error',
+                    pathname: '/',
                     state: {
                         from: props.location
                     }

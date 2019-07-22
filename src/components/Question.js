@@ -53,8 +53,8 @@ class Question extends Component {
                         </Col>
                         <Col sm={8} className='gridCol'>
                             Would you Rather... <br />
-                            <RadioGroup onChange={this.handleChange}>
-                                <RadioButton value='optionOne'>
+                            <RadioGroup onChange={this.handleChange} value={this.state.answer}>
+                                <RadioButton value='optionOne' >
                                     {question.optionOne.text}
                                 </RadioButton>
                                 <RadioButton value='optionTwo'>
